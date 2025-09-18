@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WONUOLA MOTORS</title>
+<style>
+/* === Body & Background === */
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 200px; /* space for fixed header */
+  background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+              url('background.jpg.webp') center/cover no-repeat fixed;
+  font-family: Arial, sans-serif;
+}
+
+/* === Header === */
+header {
+  background: rgba(0,128,0,0.9);
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  color: #f1f5f1;
+  font-size: 2.2em;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+header img {
+  height: 40px;
+  margin: 0 5px;
+}
+
+header p { font-size: 1.1em; margin: 5px 0; }
+header p.notice {
+  color: #111;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* === Navigation (Desktop) === */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: background .3s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+}
+
+/* === Hamburger Button === */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: rgb(10, 10, 10);
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  z-index: 10000;
+}
+
+/* === Sections === */
+section { padding:50px 20px; text-align:center; }
+h2 { color:#008000; margin-bottom:20px; }
+
+/* === Gallery === */
+.gallery {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.gallery img {
+  width:300px;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:transform .3s, box-shadow .3s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.gallery img:hover {
+  transform:scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* === Feedback Form === */
+.feedback-form {
+  max-width:500px;
+  margin:auto;
+  background:rgba(242,242,242,0.95);
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.feedback-form input,
+.feedback-form textarea,
+.feedback-form select {
+  width:100%;
+  margin-bottom:15px;
+  padding:12px;
+  border-radius:7px;
+  border:1px solid #ccc;
+  font-size:1em;
+}
+.feedback-form button {
+  background:#008000;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:1em;
+  transition:.3s;
+}
+.feedback-form button:hover { background:#00cc00; }
+
+/* === Footer === */
+footer {
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* === WhatsApp Float === */
+.whatsapp-float {
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background-color:#25D366;
+  color:white;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  z-index:1000;
+  transition:.3s;
+}
+.whatsapp-float:hover { transform:scale(1.1); }
+.whatsapp-float img { width:35px; height:35px; }
+
+/* === Call Now Button === */
+.call-now {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  background:#008000;
+  color:white;
+  padding:12px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  z-index:1000;
+  transition:.3s;
+}
+.call-now:hover { background:#00cc00; }
+
+/* === Responsive (Tablets & Phones) === */
+@media (max-width: 768px) {
+  body { 
+    padding-top: 180px;
+    font-size: 15px;
+  }
+
+  /* Show hamburger, hide nav by default */
+  .menu-toggle { display: block; }
+  nav { 
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.95);
+    padding: 15px;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 20%;
+  }
+  nav.show { display: flex; }
+
+  nav a {
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  nav a:last-child { border-bottom: none; }
+
+  header h1 { font-size: 22px; }
+  header img { height: 30px; }
+
+  .gallery img {
+    width: 95%;
+    height: auto;
+  }
+}
+
+/* === Extra Small Phones === */
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  header h1 { font-size: 20px; }
+  nav a { font-size: 14px; }
+  .gallery img { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:15px;">
+    <h1>WONUOLA MOTORS LTD.</h1>
+    <img src="download (2).webp" alt="Toyota Logo">
+    <img src="download (3) honda.webp" alt="Honda Logo">
+    <img src="download (3) nisan.webp" alt="Nissan Logo">
+    <img src="OIP (2) lexus.webp" alt="Lexus Logo">
+    <img src="mazda.webp" alt="Mazda Logo">
+    <img src="OIP mistibush.jpeg" alt="Mitsubishi Logo">
+    <img src="download (3) suzuki.webp" alt="Suzuki Logo">
+    <img src="download (3)subaru.webp" alt="Subaru Logo">
+  </div>
+  <p>We Fix | Service | Hire Cars | Buy & Sell | Uber</p>
+  <p class="notice">⚠️ We specialize in all kinds of cars, trusted across Nigeria for reliability and excellence!</p>
+
+  <!-- Navigation -->
+  <nav id="navMenu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#hire">Hire Cars</a>
+    <a href="#buy-sell">Buy & Sell</a>
+    <a href="#uber">Uber</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- === Sections (same as your version) === -->
+<section id="about">
+  <h2>About Us</h2>
+  <p>At Wonuola Motors, we are passionate about keeping all kinds of cars running at their best...</p>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <ul style="list-style:none;padding:0">
+    <li>✔ Car Repair & Maintenance</li>
+    <li>✔ Vehicle Hire</li>
+    <li>✔ Buy & Sell Japanese Cars</li>
+    <li>✔ Uber Partnership</li>
+    <li>✔ Genuine Spare Parts</li>
+  </ul>
+</section>
+
+<section id="all-cars">
+  <h2>Cars We Service</h2>
+  <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:20px;">
+    <img src="OIP (2)12.webp" alt="Toyota" height="120">
+    <img src="OIP (2) ho car.webp" alt="Honda" height="110">
+    <img src="OIP (2)ni car.webp" alt="Nissan" height="120">
+    <img src="download (3) le.webp" alt="Lexus" height="110">
+    <img src="download (3) maza car.webp" alt="Mazda" height="120">
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="images/camry.webp" alt="2025 Toyota Camry">
+    <img src="images/highlander.webp" alt="2025 Toyota Highlander">
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Phone:</strong> 08029765021</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 WONUOLA MOTORS — All rights reserved</p>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/2348055067880" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<!-- Call Now -->
+<a href="tel:08029765021" class="call-now">📞 Call Now</a>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
+
